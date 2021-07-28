@@ -23,8 +23,6 @@ server : libft $(OBJ_SERVER)
 
 client : libft $(OBJ_CLIENT)
 			@$(CC) $(CFLAGS) -o $@ $(OBJ_CLIENT) -Llibft -lft
-			# -Llibft -lft
-
 
 libft :
 		make -C libft/
@@ -32,16 +30,8 @@ libft :
 %.o : %.c
 				$(CC) $(CFLAGS) -o $@ -c $?
 
-
-#client
-#$(NAME) = libft server
-#		echo "test"
-
-
 all: server
 	@$(CC) $(CFLAGS) -o server $(OBJ_SERVER) -Llibft -lft
-	#$(CC) $(CFLAGS) -o server $(OBJ_SERVER)
-#-Lincludes/libft -lft -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit
 
 norme :
 		@make -C libft/ norme
