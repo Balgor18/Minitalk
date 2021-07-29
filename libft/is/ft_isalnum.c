@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/01/09 15:33:23 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/05/26 17:11:28 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_isalnum(int c)
 {
-	char	*tabl;
-
-	tabl = malloc(size * nmemb);
-	if (!tabl)
-		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

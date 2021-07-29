@@ -6,13 +6,13 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:42:59 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/28 10:41:46 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:29:49 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-void	print_pid()
+void	print_pid(void)
 {
 	int	pid;
 

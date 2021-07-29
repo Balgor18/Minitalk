@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/01/09 15:35:12 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/05/26 17:17:10 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_toupper(int c)
 {
-	char	*tabl;
-
-	tabl = malloc(size * nmemb);
-	if (!tabl)
-		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
 }

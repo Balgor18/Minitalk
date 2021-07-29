@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/01/09 15:35:16 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/05/26 17:18:38 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*tabl;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	tabl = malloc(size * nmemb);
-	if (!tabl)
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
 		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	str[j] = 0;
+	return (str);
 }

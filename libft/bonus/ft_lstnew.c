@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/01/09 15:34:28 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/05/26 17:25:28 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	char	*tabl;
+	t_list	*new_elem;
 
-	tabl = malloc(size * nmemb);
-	if (!tabl)
+	new_elem = malloc(sizeof(t_list));
+	if (!new_elem)
 		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
+	new_elem->content = content;
+	new_elem->next = NULL;
+	return (new_elem);
 }

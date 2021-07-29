@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2019/10/18 10:29:57 by rchallie          #+#    #+#             */
+/*   Updated: 2021/07/08 15:56:21 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*tabl;
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
-	tabl = malloc(size * nmemb);
-	if (!tabl)
-		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
-}
+int			get_next_line(int fd, char **line);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+int			ft_is_end(char *str);
+char		*join_str(char const *char1, char const *char2, int lire);
+size_t		ft_strlen(const char *s);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+# endif
+
+#endif

@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   client.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/07/29 19:30:19 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/07/29 19:31:10 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef CLIENT_H
+# define CLIENT_H
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*tabl;
+# include <unistd.h>
+# include "../libft/libft.h"
 
-	tabl = malloc(size * nmemb);
-	if (!tabl)
-		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
-}
+# define TRUE 1
+# define FALSE 0
+
+/*
+** Color
+*/
+void	blue(void);
+void	cyan(void);
+void	red(void);
+void	white(void);
+void	green(void);
+
+/*
+** Error
+*/
+int		error_arg(void);
+
+#endif

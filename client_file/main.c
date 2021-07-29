@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 15:33:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/05/26 17:11:14 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/07/29 19:29:24 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "client.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	main(int agc, char **agv)
 {
-	char	*tabl;
-
-	tabl = malloc(size * nmemb);
-	if (!tabl)
-		return (NULL);
-	ft_memset(tabl, 0, nmemb * size);
-	return (tabl);
+	(void)agv;
+	ft_putstr_fd("Start client \n", 1);
+	if (agc < 2)
+		return (error_arg());
+	green();
+	ft_putstr_fd("Client work \n", 1);
+	return (0);
 }
