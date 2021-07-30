@@ -6,7 +6,7 @@
 #    By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/09 15:35:09 by fcatinau          #+#    #+#              #
-#    Updated: 2021/05/29 16:47:41 by fcatinau         ###   ########.fr        #
+#    Updated: 2021/07/30 09:32:36 by fcatinau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,29 +35,29 @@ OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 $(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 %.o: %.c
-		$(CC) -I. -o $@ -c $? $(CFLAGS)
+	$(CC) -I. -o $@ -c $? $(CFLAGS)
 
 all: $(NAME)
 
 clean:
-		$(RM) $(OBJ) $(OBJ_BONUS)
+	@$(RM) $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-		$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
 bonus : $(OBJ_BONUS) $(OBJ)
-		ar rc $(NAME) $(OBJ) $(OBJ_BONUS)
-		ranlib $(NAME)
+	ar rc $(NAME) $(OBJ) $(OBJ_BONUS)
+	ranlib $(NAME)
 
 norme :
-		norminette -R CheckForbiddenSourceHeader $(SRC)
-		norminette -R CheckForbiddenSourceHeader $(SRC_BONUS)
-		norminette -R CheckDefine libft.h
+	norminette -R CheckForbiddenSourceHeader $(SRC)
+	norminette -R CheckForbiddenSourceHeader $(SRC_BONUS)
+	norminette -R CheckDefine libft.h
 
 .PHONY: clean fclean $(NAME)
