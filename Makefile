@@ -16,7 +16,7 @@ PURPLE = $'\x1b[35m
 CYAN = $'\x1b[36m
 WHITE = $'\x1b[37m
 
-SRC_CLIENT = main.c color.c error.c
+SRC_CLIENT = error.c main.c verif.c
 
 OBJ_CLIENT = $(addprefix client_file/, ${SRC_CLIENT:.c=.o})
 
@@ -24,17 +24,22 @@ SRC_SERVER = main.c
 
 OBJ_SERVER = $(addprefix server_file/, ${SRC_SERVER:.c=.o})
 
-all : $(OBJ_SERVER) $(OBJ_CLIENT) libft
+all : $(OBJ_SERVER) $(OBJ_CLIENT) libft lib_color
 	@echo "\n$(YELLOW)Compiling server...$(WHITE)"
-	$(CC) $(CFLAGS) -o server $(OBJ_SERVER) -Llibft -lft
+	$(CC) $(CFLAGS) -o server $(OBJ_SERVER) -Lincludes/libft -lft -Lincludes/lib_color -lcolor
 	@echo "$(GREEN)-->[OK] $(WHITE)"
 	@echo "\n$(YELLOW)Compiling client...$(WHITE)"
-	$(CC) $(CFLAGS) -o client $(OBJ_CLIENT) -Llibft -lft
+	$(CC) $(CFLAGS) -o client $(OBJ_CLIENT) -Lincludes/libft -lft -Lincludes/lib_color -lcolor
 	@echo "$(GREEN)-->[OK] $(WHITE)\n"
+
+lib_color :
+	@echo "$(YELLOW)Compiling lib_color...$(PURPLE)"
+	@make -s -C includes/lib_color/
+	@echo "$(GREEN)-->[OK] $(WHITE)"
 
 libft :
 	@echo "$(YELLOW)Compiling libft...$(PURPLE)"
-	@make -s -C libft/
+	@make -s -C includes/libft/
 	@echo "$(GREEN)-->[OK] $(WHITE)"
 
 %.o : %.c
@@ -43,7 +48,8 @@ libft :
 	@echo "$(GREEN)[OK] $(WHITE)"
 
 norme :
-	make -C libft/ norme
+	make -C includes/libft/ norme
+	make -C includes/lib_color/ norme
 	norminette -R CheckForbiddenSourceHeader $(SRC_CLIENT)
 	norminette -R CheckForbiddenSourceHeader $(SRC_SERVER)
 	norminette -R CheckDefine push_swap.h
@@ -52,13 +58,15 @@ clean :
 	@echo "$(RED)Clean file...$(WHITE)"
 	@$(RM) $(OBJ_SERVER)
 	@$(RM) $(OBJ_CLIENT)
-	@make -C libft/ clean
+	@make -C includes/libft/ clean
+	@make -C includes/lib_color/ clean
 	@echo "$(GREEN)-->[OK] $(WHITE)\n"
 
 fclean : clean
 	@echo "$(RED)Clean exec...$(WHITE)"
 	$(RM) server client
-	@make -C libft/ fclean
+	@make -C includes/libft/ fclean
+	@make -C includes/lib_color/ fclean
 	@echo "$(GREEN)-->[OK] $(WHITE)\n"
 
 re : fclean all

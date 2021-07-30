@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 19:30:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/30 10:25:43 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/07/30 09:39:46 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/07/30 09:41:29 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#include "client.h"
 
-# include <unistd.h>
-# include "../includes/lib_color/color.h"
-# include "../includes/libft/libft.h"
-
-# define TRUE 1
-# define FALSE 0
-
-/*
-** Error
-*/
-int		error_arg(char *s);
-
-/*
-** Verif
-*/
-int		verif_str_digit(char *s);
-
-#endif
+int	verif_str_digit(char *s)
+{
+	while (ft_isdigit(*s) && *s)
+	{
+		s++;
+	}
+	if (!*s)
+		return (TRUE);
+	return (FALSE);
+}

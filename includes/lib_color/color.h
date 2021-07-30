@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 19:30:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/30 10:25:43 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/07/30 09:57:34 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/07/30 10:10:01 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#ifndef COLOR_H
+# define COLOR_H
 
 # include <unistd.h>
-# include "../includes/lib_color/color.h"
-# include "../includes/libft/libft.h"
+# include "../libft/libft.h"
 
-# define TRUE 1
-# define FALSE 0
+void	black(void);
+void	blue(void);
+void	cyan(void);
+void	green(void);
 
-/*
-** Error
-*/
-int		error_arg(char *s);
+void	purple(void);
+void	red(void);
+void	white(void);
+void	yellow(void);
 
-/*
-** Verif
-*/
-int		verif_str_digit(char *s);
+void	reset(void);
 
 #endif

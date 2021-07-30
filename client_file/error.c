@@ -6,16 +6,16 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 16:20:32 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/29 19:11:50 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/07/30 09:50:43 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-int	error_arg(void)
+int	error_arg(char *s)
 {
 	red();
-	ft_putstr_fd("Error not enough arguments \n", 1);
+	ft_putstr_fd(s, 1);
 	white();
 	return (0);
 }
