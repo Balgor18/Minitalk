@@ -6,11 +6,11 @@
 #    By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/09 15:35:09 by fcatinau          #+#    #+#              #
-#    Updated: 2021/07/30 10:24:56 by fcatinau         ###   ########.fr        #
+#    Updated: 2021/07/31 17:11:24 by fcatinau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=color.a
+NAME=libcolor.a
 
 CC=gcc
 

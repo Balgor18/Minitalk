@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verif.c                                            :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 09:39:46 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/31 18:23:25 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/07/31 18:11:25 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/07/31 18:17:13 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-int	verif_str_digit(char *s)
+void	init_data(t_data *d, char **s)
 {
-	while (ft_isdigit(*s) && *s)
-		s++;
-	if (!*s)
-		return (TRUE);
-	return (FALSE);
+	d->pid = ft_atoi(s[1]);
+	d->s = s[2];
 }
