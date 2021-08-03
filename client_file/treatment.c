@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   treatment.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/28 09:42:59 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/03 11:48:04 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/08/03 12:44:55 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/08/03 13:29:17 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "client.h"
 
-void	print_pid(void)
+#include <stdio.h>
+/*void	char_treatment(int c)
 {
-	int	pid;
+	printf("Treatment |%c|\n", c);
+}*/
 
-	pid = getpid();
-	ft_putstr_fd("PID : ", 1);
-	ft_putnbr_fd(pid, 1);
-	ft_putchar_fd('\n', 1);
-}
-
-void	handler(int num)
+void	str_treatment(t_data d)
 {
-	(void)num;
-	ft_putstr_fd("I won't die!\n", 1);
-}
-
-int	main(void)
-{
-	struct sigaction	sa;
-
-	sa.sa_handler = handler;
-	while (1)
+	printf("str %s\n", d.s);
+	while(*d.s)
 	{
-		print_pid();
-		//sigaction(SIGINT, &sa, NULL);
-		signal(SIGTERM, handler);
-		sleep(1);
+
+		ft_putnbr_base(*d.s, "01");
+		printf(" |%c|\n", *d.s);
+		//char_treatment(*d.s);
+		d.s++;
 	}
-	//waitpid();
-	return (0);
 }

@@ -6,11 +6,21 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/02 16:10:47 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/03 12:57:02 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
+
+void	test(void)
+{
+	sigset_t test;
+
+	//segemptyset(&test);
+	sigfillset(&test);
+	sigaddset(&test, SIGUSR1);
+	sigdelset(&test, SIGUSR1);
+}
 
 int	main(int agc, char **agv)
 {
@@ -25,7 +35,9 @@ int	main(int agc, char **agv)
 		return (error_arg("Error bad arguments need string\n"));
 	green();
 	ft_putstr_fd("Client work \n", 1);
+	reset();
 	init_data(&data ,agv);
+	str_treatment(data);
 	//sigaction(ft_atoi(agv[1]), test);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:30:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/02 15:39:49 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/03 13:27:45 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ typedef struct s_data
 }				t_data;
 
 /*
+** Includes
+*/
+void	ft_putnbr_base(int nbr, char *base);
+
+/*
 ** Error
 */
 int		error_arg(char *s);
@@ -42,4 +47,8 @@ int		verif_str_digit(char *s);
 */
 void	init_data(t_data *d, char **s);
 
+/*
+** Treatment
+*/
+void	str_treatment(t_data d);
 #endif
