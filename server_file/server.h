@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:43:05 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/03 12:02:19 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/05 17:12:54 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 
 # define TRUE 1
 # define FALSE 0
+
+int	error_arg(char *s);
 
 #endif

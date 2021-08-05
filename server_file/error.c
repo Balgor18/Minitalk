@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 18:11:25 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/31 18:17:13 by fcatinau         ###   ########.fr       */
+/*   Created: 2021/07/29 16:20:32 by fcatinau          #+#    #+#             */
+/*   Updated: 2021/08/05 17:17:07 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
+#include "server.h"
 
-void	init_data(t_data *d, char **s)
+int	error_arg(char *s)
 {
-	d->pid = ft_atoi(s[1]);
-	d->s = s[2];
+	red();
+	ft_putstr_fd(s, 1);
+	white();
+	return (EXIT_FAILURE);
 }

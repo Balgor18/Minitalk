@@ -6,16 +6,24 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 16:20:32 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/07/30 09:50:43 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/04 14:42:13 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
+
+#include <stdio.h>
+int	error_no_arg(void)
+{
+	write(1, "usage : \033[0;31m./client \033[0;32m [PID]\
+	\033[0;33m [STRING]\e[0m", 58);
+	return (0);
+}
 
 int	error_arg(char *s)
 {
 	red();
 	ft_putstr_fd(s, 1);
 	white();
-	return (0);
+	return (EXIT_FAILURE);
 }

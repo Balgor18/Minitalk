@@ -2,7 +2,7 @@ NAME = minitalk
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -rf
 
@@ -16,11 +16,11 @@ PURPLE = $'\x1b[35m
 CYAN = $'\x1b[36m
 WHITE = $'\x1b[37m
 
-SRC_CLIENT = error.c ft_putnbr_base.c init_data.c main.c treatment.c verif.c
+SRC_CLIENT = error.c ft_putnbr_base.c main.c treatment.c verif.c
 
 OBJ_CLIENT = $(addprefix client_file/, ${SRC_CLIENT:.c=.o})
 
-SRC_SERVER = main.c
+SRC_SERVER = error.c main.c
 
 OBJ_SERVER = $(addprefix server_file/, ${SRC_SERVER:.c=.o})
 
