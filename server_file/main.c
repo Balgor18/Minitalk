@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:42:59 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/05 19:32:52 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/06 17:24:22 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,42 +30,30 @@ void	print_pid(void)
 void	receive(int num)
 {
 	static char		c = 0;
-	static char		str[BUFFER] = "";
+	//static char		str[BUFFER] = "";
 	static size_t	char_bite = 0;
 
-	//printf("--------- %zu ---------\n", char_bite);
-	//printf("char %d\n", c);
 	if (num == SIGUSR1)
-	{
-		//printf("\nc avant 1 %d\n", c);
-		c = (c >> 1) + 1;
-		//printf("\nc apres 1 %d\n", c);
-	}
+		c = (c << 1) + 1;
 	else if (num == SIGUSR2)
-	{
-		//printf("\nc avant 0 %d\n", c);
-		c = (c >> 1);
-		//printf("\nc apres 0 %d\n", c);
-	}
+		c = (c << 1);
 	if (++char_bite == 8)
 	{
-		*str = c;
-		ft_putstr_fd(str , 1);
-		ft_putchar_fd('\n', 1);
+		write (1, &c, 1);
+		//*str = c;
+		//ft_putstr_fd(str , 1);
+		//ft_putchar_fd('\n', 1);
 		char_bite = 0;
 		c = 0;
-		++*str;
+		//++*str;
 	}
-	//ft_putstr_fd("char_bite ", 1);
 	//ft_putnbr_fd(char_bite, 1);
 	//ft_putchar_fd('\n', 1);
-	//sleep(1);
-	//printf("----------------------\n");
 }
 
 int	main(void)
 {
-	struct sigaction	sigac;
+	struct sigaction	sigac;// problem
 
 	sigac.sa_handler = receive;
 	sigemptyset(&sigac.sa_mask);

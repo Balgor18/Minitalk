@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/05 18:32:06 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/06 17:21:38 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,45 @@ void	send_char(pid_t pid, char *s)
 	i = -1;
 	while (*s)
 	{
-		printf("----- %c -----\n", *s);
+		//printf("----- %c -----\n", *s);
+		while (++i < 8)
+		{
+			//printf("%d|j'ai envoye ", i);
+			if (*s & 0x080)
+			{
+				write(1, "1\n", 2);
+				if (kill(pid, SIGUSR1) == -1)
+					error_arg("Error PID\n");
+			}
+			else
+			{
+				write(1,"0\n", 2);
+				if (kill(pid, SIGUSR2) == -1)
+					error_arg("Error PID\n");
+			}
+			*s = *s << 1;
+			usleep(10);
+		}
+		i = 0;
+		++s;
+	}
+}
+
+void	test(pid_t pid)
+{
+	int i;
+	int j;
+	char s[4] = "c\0";
+
+	j = 0;
+	i = -1;
+	while (s[j])
+	{
+		printf("----- %c -----\n", s[j]);
 		while (++i < 8)
 		{
 			printf("%d|j'ai envoye ", i);
-			if (*s & 0x080)
+			if (s[j] & 0x080)
 			{
 				printf("1\n");
 				if (kill(pid, SIGUSR1) == -1)
@@ -37,17 +71,12 @@ void	send_char(pid_t pid, char *s)
 					error_arg("Error PID\n");
 			}
 			*s = *s << 1;
-			//sleep(1);
+			usleep(10);
 		}
-		i = 0;
-		++s;
+		i = -1;
+		j++;
 	}
 }
-
-/*void	test(char *s)
-{
-
-}*/
 
 int	main(int agc, char **agv)
 {
@@ -66,7 +95,7 @@ int	main(int agc, char **agv)
 	reset();
 
 	str_treatment(agv[2]);
-	//test(agv[2]);
+	//test(pid);
 	send_char(pid, agv[2]);
 	return (0);
 }
