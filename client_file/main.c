@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/07 18:49:52 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/07 18:53:02 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(int agc, char **agv)
 	green();
 	ft_putstr_fd("Client work \n", 1);
 	reset();
-	//str_treatment(agv[2]);
 	send_char(pid, agv[2]);
 	return (0);
 }

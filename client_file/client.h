@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:30:19 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/04 17:25:34 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/07 18:53:10 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,4 @@ int		error_no_arg(void);
 */
 int		verif_str_digit(char *s);
 
-/*
-** Treatment
-*/
-void	str_treatment(char *s);
 #endif
