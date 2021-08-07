@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/06 17:21:38 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/07 18:49:52 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,72 +15,34 @@
 #include <stdio.h>
 void	send_char(pid_t pid, char *s)
 {
-	int i;
+	int	i;
+	int	j;
 
+	j = -1;
 	i = -1;
-	while (*s)
+	while (s[++j])
 	{
-		//printf("----- %c -----\n", *s);
 		while (++i < 8)
 		{
-			//printf("%d|j'ai envoye ", i);
-			if (*s & 0x080)
-			{
-				write(1, "1\n", 2);
-				if (kill(pid, SIGUSR1) == -1)
-					error_arg("Error PID\n");
-			}
-			else
-			{
-				write(1,"0\n", 2);
-				if (kill(pid, SIGUSR2) == -1)
-					error_arg("Error PID\n");
-			}
-			*s = *s << 1;
-			usleep(10);
-		}
-		i = 0;
-		++s;
-	}
-}
-
-void	test(pid_t pid)
-{
-	int i;
-	int j;
-	char s[4] = "c\0";
-
-	j = 0;
-	i = -1;
-	while (s[j])
-	{
-		printf("----- %c -----\n", s[j]);
-		while (++i < 8)
-		{
-			printf("%d|j'ai envoye ", i);
+			usleep(20);
 			if (s[j] & 0x080)
 			{
-				printf("1\n");
 				if (kill(pid, SIGUSR1) == -1)
 					error_arg("Error PID\n");
 			}
 			else
-			{
-				printf("0\n");
 				if (kill(pid, SIGUSR2) == -1)
 					error_arg("Error PID\n");
-			}
-			*s = *s << 1;
-			usleep(10);
+			s[j] = s[j] << 1;
 		}
 		i = -1;
-		j++;
 	}
 }
 
 int	main(int agc, char **agv)
 {
-	pid_t pid;
+	pid_t	pid;
+
 	if (agc < 2)
 		return (error_no_arg());
 	if (!verif_str_digit(agv[1]))
@@ -93,9 +55,7 @@ int	main(int agc, char **agv)
 	green();
 	ft_putstr_fd("Client work \n", 1);
 	reset();
-
-	str_treatment(agv[2]);
-	//test(pid);
+	//str_treatment(agv[2]);
 	send_char(pid, agv[2]);
 	return (0);
 }
