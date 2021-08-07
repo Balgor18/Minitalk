@@ -16,7 +16,7 @@ PURPLE = $'\x1b[35m
 CYAN = $'\x1b[36m
 WHITE = $'\x1b[37m
 
-SRC_CLIENT = error.c ft_putnbr_base.c main.c verif.c
+SRC_CLIENT = main.c verif.c
 
 OBJ_CLIENT = $(addprefix client_file/, ${SRC_CLIENT:.c=.o})
 

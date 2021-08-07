@@ -6,13 +6,41 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/07 18:53:02 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/07 19:05:52 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
+#include <unistd.h>
+#include <signal.h>
+#include "../includes/lib_color/color.h"
+#include "../includes/libft/libft.h"
+#define TRUE 1
+#define FALSE 0
 
-#include <stdio.h>
+int	verif_str_digit(char *s)
+{
+	while (ft_isdigit(*s) && *s)
+		s++;
+	if (!*s)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	error_no_arg(void)
+{
+	write(1, "usage : \033[0;31m./client \033[0;32m [PID]\
+	\033[0;33m [STRING]\e[0m", 58);
+	return (0);
+}
+
+int	error_arg(char *s)
+{
+	red();
+	ft_putstr_fd(s, 1);
+	white();
+	return (EXIT_FAILURE);
+}
+
 void	send_char(pid_t pid, char *s)
 {
 	int	i;

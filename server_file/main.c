@@ -6,15 +6,25 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:42:59 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/07 18:32:37 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/07 19:08:19 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+//#define BUFFER	1024
+#include <unistd.h>
+#include <signal.h>
+#include "../includes/lib_color/color.h"
+#include "../includes/libft/libft.h"
+#define TRUE 1
+#define FALSE 0
 
-//#define ONE		SIGUSR1
-//#define ZERO	SIGUSR2
-#define BUFFER	1024
+int	error_arg(char *s)
+{
+	red();
+	ft_putstr_fd(s, 1);
+	white();
+	return (EXIT_FAILURE);
+}
 
 void	print_pid(void)
 {
@@ -40,7 +50,6 @@ void	receive(int num)
 	{
 		char_byte = 0;
 		ft_putchar_fd(c, 1);
-		//ft_putchar_fd('\n', 1);
 		c = 0;
 	}
 }
@@ -62,10 +71,7 @@ int	main(void)
 	sigac.sa_handler = receive;
 	sigac.sa_flags = 0;
 	sigac.sa_mask = 128;
-	//sigemptyset(&sigac.sa_mask);
 	sigemptyset(&sigac.sa_flags);
-	//signal(SIGUSR1, receive);
-	//signal(SIGUSR2, receive);
 	sigaddset(&sigac.sa_flags, SIGUSR1);
 	sigaddset(&sigac.sa_flags, SIGUSR2);
 	if (sigaction(SIGUSR1, &sigac, NULL) == -1)
