@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:42:59 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/07 19:08:19 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:09:09 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ void	print_pid(void)
 	ft_putchar_fd('\n', 1);
 }
 
-void	receive(int num)
+void	receive(int num, siginfo_t *info, void *s)
 {
 	static char		c = 0;
 	static size_t	char_byte = 0;
 
+	(void)s;
 	c = c << 1;
 	if (num == SIGUSR1)
 		c = c + 1;
@@ -48,27 +49,20 @@ void	receive(int num)
 		c = c + 0;
 	if (++char_byte == 8)
 	{
+		if (c == 0)
+			kill(info->si_pid, SIGUSR1);
+		else
+			ft_putchar_fd(c, 1);
 		char_byte = 0;
-		ft_putchar_fd(c, 1);
 		c = 0;
 	}
 }
 
-/*
-**struct sigaction
-** {
-**	void		(*sa_handler) (int);
-**	void		(*sa_sigaction) (int, siginfo_t *, void *);
-**	sigset_t	sa_mask;
-**	int			sa_flags;
-**	void		(*sa_restorer) (void);
-** };
-*/
 int	main(void)
 {
 	struct sigaction	sigac;
 
-	sigac.sa_handler = receive;
+	sigac.sa_sigaction = receive;
 	sigac.sa_flags = 0;
 	sigac.sa_mask = 128;
 	sigemptyset(&sigac.sa_flags);

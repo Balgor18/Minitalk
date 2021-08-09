@@ -16,11 +16,11 @@ PURPLE = $'\x1b[35m
 CYAN = $'\x1b[36m
 WHITE = $'\x1b[37m
 
-SRC_CLIENT = main.c verif.c
+SRC_CLIENT = main.c send.c error.c
 
 OBJ_CLIENT = $(addprefix client_file/, ${SRC_CLIENT:.c=.o})
 
-SRC_SERVER = error.c main.c
+SRC_SERVER = main.c
 
 OBJ_SERVER = $(addprefix server_file/, ${SRC_SERVER:.c=.o})
 
@@ -50,9 +50,9 @@ libft :
 norme :
 	make -C includes/libft/ norme
 	make -C includes/lib_color/ norme
-	norminette -R CheckForbiddenSourceHeader $(SRC_CLIENT)
-	norminette -R CheckForbiddenSourceHeader $(SRC_SERVER)
-	norminette -R CheckDefine push_swap.h
+	norminette -R CheckForbiddenSourceHeader $(addprefix client_file/, ${SRC_CLIENT})
+	norminette -R CheckForbiddenSourceHeader $(addprefix server_file/, ${SRC_SERVER})
+	norminette -R CheckDefine client_file/client.h
 
 clean :
 	@echo "$(RED)Clean file...$(WHITE)"
