@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/09 17:46:57 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/09 19:05:49 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	print_acknow(int num)
 	blue();
 	ft_putstr_fd("Message received\n", 1);
 	reset();
+	exit(1);
 }
 
 void	print_work(void)
@@ -57,8 +58,7 @@ int	main(int agc, char **agv)
 	pid_t				pid;
 	struct sigaction	sig;
 
-	sig.sa_flags = 0;
-	sig.sa_mask = 128;
+	sig.sa_handler = print_acknow;
 	sigemptyset(&sig.sa_flags);
 	sigaddset(&sig.sa_flags, SIGUSR1);
 	if (agc < 2)
@@ -70,7 +70,6 @@ int	main(int agc, char **agv)
 		return (error_arg("Error PID\n"));
 	if (!agv[2])
 		return (error_arg("Error bad arguments need string\n"));
-	sig.sa_handler = print_acknow;
 	sigaction(SIGUSR1, &sig, NULL);
 	print_work();
 	if (send_string(pid, agv[2]))
