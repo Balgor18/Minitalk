@@ -6,12 +6,12 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:58:58 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/09 14:00:58 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:46:57 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
-#include <stdio.h>
+
 int	verif_str_digit(char *s)
 {
 	while (ft_isdigit(*s) && *s)
@@ -45,6 +45,13 @@ void	print_acknow(int num)
 	reset();
 }
 
+void	print_work(void)
+{
+	green();
+	ft_putstr_fd("Client work \n", 1);
+	reset();
+}
+
 int	main(int agc, char **agv)
 {
 	pid_t				pid;
@@ -65,10 +72,9 @@ int	main(int agc, char **agv)
 		return (error_arg("Error bad arguments need string\n"));
 	sig.sa_handler = print_acknow;
 	sigaction(SIGUSR1, &sig, NULL);
-	green();
-	ft_putstr_fd("Client work \n", 1);
-	reset();
-	send_string(pid, agv[2]);
+	print_work();
+	if (send_string(pid, agv[2]))
+		return (1);
 	last_char(pid);
 	pause();
 	return (0);

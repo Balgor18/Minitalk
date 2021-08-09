@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 12:09:13 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/09 12:09:37 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:22:00 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	send_char(pid_t pid, char c)
 	return (ret);
 }
 
-void	send_string(pid_t pid, char *s)
+int	send_string(pid_t pid, char *s)
 {
 	int	j;
 	int	ret;
@@ -49,4 +49,5 @@ void	send_string(pid_t pid, char *s)
 		if (ret)
 			break ;
 	}
+	return (ret);
 }

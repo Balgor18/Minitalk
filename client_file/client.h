@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 12:04:52 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/09 12:10:18 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/08/09 17:23:07 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int		error_arg(char *s);
 ** Send
 */
 int		send_char(pid_t pid, char c);
-void	send_string(pid_t pid, char *s);
+int		send_string(pid_t pid, char *s);
 
 #endif
