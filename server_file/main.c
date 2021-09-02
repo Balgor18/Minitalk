@@ -6,7 +6,7 @@
 /*   By: fcatinau <fcatinau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:42:59 by fcatinau          #+#    #+#             */
-/*   Updated: 2021/08/09 17:20:49 by fcatinau         ###   ########.fr       */
+/*   Updated: 2021/09/02 09:56:20 by fcatinau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 int	error_arg(char *s)
 {
 	red();
-	ft_putstr_fd(s, 1);
+	ft_putstr_fd(s, 2);
 	white();
 	return (EXIT_FAILURE);
 }
