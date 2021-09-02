@@ -24,23 +24,19 @@ SRC_SERVER = main.c
 
 OBJ_SERVER = $(addprefix server_file/, ${SRC_SERVER:.c=.o})
 
-all : $(OBJ_SERVER) $(OBJ_CLIENT) libft lib_color
+all : $(OBJ_SERVER) $(OBJ_CLIENT)
+	@echo "$(YELLOW)Compiling libft...$(PURPLE)"
+	@make -s -C includes/libft/
+	@echo "$(GREEN)-->[OK] $(WHITE)"
+	@echo "$(YELLOW)Compiling lib_color...$(PURPLE)"
+	@make -s -C includes/lib_color/
+	@echo "$(GREEN)-->[OK] $(WHITE)"
 	@echo "\n$(YELLOW)Compiling server...$(WHITE)"
 	$(CC) $(CFLAGS) -o server $(OBJ_SERVER) -Lincludes/libft -lft -Lincludes/lib_color -lcolor
 	@echo "$(GREEN)-->[OK] $(WHITE)"
 	@echo "\n$(YELLOW)Compiling client...$(WHITE)"
 	$(CC) $(CFLAGS) -o client $(OBJ_CLIENT) -Lincludes/libft -lft -Lincludes/lib_color -lcolor
 	@echo "$(GREEN)-->[OK] $(WHITE)\n"
-
-lib_color :
-	@echo "$(YELLOW)Compiling lib_color...$(PURPLE)"
-	@make -s -C includes/lib_color/
-	@echo "$(GREEN)-->[OK] $(WHITE)"
-
-libft :
-	@echo "$(YELLOW)Compiling libft...$(PURPLE)"
-	@make -s -C includes/libft/
-	@echo "$(GREEN)-->[OK] $(WHITE)"
 
 %.o : %.c
 	@echo "$(PURPLE)Compiling: $< $(WHITE)"
